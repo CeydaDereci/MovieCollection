@@ -19,10 +19,23 @@ public class MovieService {
     }
 
     public Movie findByGenre(String genre){
-        return movieRepository.findByMovieName(genre);
+        return movieRepository.findByGenre(genre);
     }
 
     public void saveMovie(Movie movie){
         movieRepository.save(movie);
+    }
+
+    public void addMovie(){
+        Movie movie= new Movie();
+        movieRepository.save(movie);
+    }
+
+    public Iterable<Movie> getMovies() {
+        return movieRepository.findAll();
+    }
+
+    public void deleteMovieById(long id) {
+        movieRepository.delete(id);
     }
 }

@@ -1,10 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Movie Collection</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <style>
+        #movies{
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #movies td, #movies th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #movies tr:nth-child(even){background-color: #f2f2f2;}
 
+        #movies tr:hover {background-color: #ddd;}
+
+        #movies th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <table style="width:100%">
+        <tr>
+            <th>Movie Name</th>
+            <th>Genre</th>
+            <th>Language</th>
+            <th>Info</th>
+            <th>Release Year</th>
+        </tr>
+        <tr th:each="movie : ${movie}">
+            <td th:text="${movie.movieName}">Movie name</td>
+            <td th:text="${movie.genre}">Genre</td>
+            <td th:text="${movie.language}">Language</td>
+            <td th:text="${movie.info}">Info</td>
+            <td th:text="${movie.releaseYear}">Year</td>
+        </tr>
+    </table>
+</div>
+<div class="margin-top20 text-center"><a th:href="@{/addMovie}">Add Movie</a></div>
 </body>
 </html>

@@ -1,14 +1,18 @@
 package com.example.moviecollection.controller;
 
+import com.example.moviecollection.model.Movie;
 import com.example.moviecollection.model.User;
+import com.example.moviecollection.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.moviecollection.service.UserService;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -16,6 +20,7 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     UserService userService;
+    MovieService movieService;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerPage(Model model) {
@@ -34,6 +39,23 @@ public class UserController {
 
         }
         return "index";
+    }
+
+    @RequestMapping(value = "/addMovie",method = RequestMethod.GET)
+    public String addMoviePage(Model model){
+        model.addAttribute("movie",new Movie());
+        return "addMovie";
+    }
+
+    @RequestMapping(value = "/addMovie", method = RequestMethod.POST)
+    public String saveMoviePage(@Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model){
+        model.addAttribute("movie", movie);
+        if (bindingResult.hasErrors()) {
+            return "addMovie";
+        }
+        else
+            movieService.saveMovie(movie);
+        return  "movies";
     }
 
 

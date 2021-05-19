@@ -10,8 +10,12 @@
 </head>
 <body>
 <div class="container">
-    <h2>Welcome.</h2>
-    <a href="/logout" class="btn btn-danger">Logout</a>
+    <strong>Login is successful. Welcome.</strong>
+    <div class="margin-top20 text-center"><a th:href="@{/movies}">Movies</a></div>
+    <div class="margin-top20 text-center"><a th:href="@{/addMovie}">Add Movie</a></div>
+    <footer>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+    </footer>
 </div>
 </body>
 </html>
