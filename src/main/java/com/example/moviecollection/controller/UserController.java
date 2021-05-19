@@ -20,7 +20,6 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     UserService userService;
-    MovieService movieService;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerPage(Model model) {
@@ -40,24 +39,6 @@ public class UserController {
         }
         return "index";
     }
-
-    @RequestMapping(value = "/addMovie",method = RequestMethod.GET)
-    public String addMoviePage(Model model){
-        model.addAttribute("movie",new Movie());
-        return "addMovie";
-    }
-
-    @RequestMapping(value = "/addMovie", method = RequestMethod.POST)
-    public String saveMoviePage(@Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult, Model model){
-        model.addAttribute("movie", movie);
-        if (bindingResult.hasErrors()) {
-            return "addMovie";
-        }
-        else
-            movieService.saveMovie(movie);
-        return  "movies";
-    }
-
 
     @RequestMapping("/")
     public String index() {

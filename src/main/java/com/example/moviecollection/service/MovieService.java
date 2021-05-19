@@ -5,6 +5,9 @@ import com.example.moviecollection.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @Service
 public class MovieService {
     @Autowired
@@ -26,8 +29,8 @@ public class MovieService {
         movieRepository.save(movie);
     }
 
-    public void addMovie(){
-        Movie movie= new Movie();
+    public void addMovie(Movie m){
+        Movie movie = new Movie(m.getMovieName(),m.getGenre(),m.getLanguage(),m.getInfo(),m.getReleaseYear());
         movieRepository.save(movie);
     }
 

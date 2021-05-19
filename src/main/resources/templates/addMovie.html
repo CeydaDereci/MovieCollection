@@ -11,25 +11,29 @@
 <div class="container">
 
     <h1 class="h3 mb-3 font-weight-normal">Add Movie</h1>
+    <form th:action="@{/movies}" th:object="${movie}" th:method="post">
 
-    <form autocomplete="off" action="#" th:action="@{/addMovie}" th:object="${movie}" method="post">
 
         <label>Movie name</label>
-        <input type="text" id="firstName" placeholder="Movie Name" th:field="*{movieName}" class="form-control"/><br/>
+        <input type="text" id="movieName" placeholder="Movie Name" th:field="*{movieName}" class="form-control"/><br/>
+        <td th:if="${#fields.hasErrors('movieName')}" th:errors="*{movieName}"></td>
 
         <label>Genre</label>
-        <input type="text" id="lastName" placeholder="Genre" th:field="*{genre}" class="form-control"/><br/>
-
+        <input type="text" id="genre" placeholder="Genre" th:field="*{genre}" class="form-control"/><br/>
+        <td th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></td>
 
         <label>Language</label>
         <input type="text" id="language" placeholder="Language" th:field="*{language}" class="form-control"/><br/>
+        <td th:if="${#fields.hasErrors('language')}" th:errors="*{language}"></td>
 
         <label>Info</label>
         <input type="text" id="info" placeholder="info" th:field="*{info}" class="form-control"/><br/>
+        <td th:if="${#fields.hasErrors('info')}" th:errors="*{info}"></td>
 
 
         <label>Release Year</label>
-        <input type="text" id="releaseYear" placeholder="Release Year" th:field="*{releaseYear}" class="form-control"/><br/>
+        <input type="text" id="releaseYear" placeholder="Release Year" th:field="*{releaseYear}" class="form-control"/>
+        <br/><td th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></td>
 
         <button type="submit" class="btn btn-success text-center form-control">Add</button>
 
