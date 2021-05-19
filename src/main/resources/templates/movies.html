@@ -23,22 +23,24 @@
         #movies th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
+            text-align: center;
             background-color: #4CAF50;
             color: white;
         }
     </style>
 </head>
-
+<h3 class="text-center">Movies</h3>
 <body>
 <div class="container">
-    <table style="width:100%">
+    <table id="movies">
         <tr>
             <th>Movie Name</th>
             <th>Genre</th>
             <th>Language</th>
             <th>Info</th>
             <th>Release Year</th>
+            <th></th>
+            <th></th>
         </tr>
         <tr th:each="movie : ${movie}">
             <td th:text="${movie.movieName}">Movie name</td>
@@ -46,9 +48,39 @@
             <td th:text="${movie.language}">Language</td>
             <td th:text="${movie.info}">Info</td>
             <td th:text="${movie.releaseYear}">Year</td>
+            <td>
+                <form th:action="@{/movies/${movie.id}}" th:method="edit">
+                    <button type="button" class="btn btn-warning">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/movies/${movie.id}}" th:method="delete">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>
-<div class="margin-top20 text-center"><a th:href="@{/addMovie}">Add Movie</a></div>
+<div>
+    <div class="margin-top20 text-center"><a th:href="@{/movies}">Sort By Year</a></div>
+</div>
+<div class="container">
+    <div>
+        <form th:action="@{/movies}" th:object="${movie}" th:method="get">
+            <label>Movie name</label>
+            <input type="text" id="movieName" placeholder="Movie Name" class="form-control"/><br/>
+            <button type="button" class="btn btn-info">Find</button>
+        </form>
+    </div>
+    <div>
+     <form th:action="@{/movies}" th:object="${movie}" th:method="get">
+          <label>Genre</label>
+          <input type="text" id="genre" placeholder="Genre" class="form-control"/><br/>
+          <button type="button" class="btn btn-info">Find</button>
+        </form>
+    </div>
+</div>
+
+<div class="margin-top20 text-center"><a th:href="@{/addMovie}">Go to Add Movie Page</a></div>
 </body>
 </html>

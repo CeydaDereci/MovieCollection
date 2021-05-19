@@ -1,6 +1,10 @@
 package com.example.moviecollection.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 @Entity
 public class Movie {
@@ -8,6 +12,7 @@ public class Movie {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(name = "movie_name")
     private String movieName;
     @Column(name = "genre")
@@ -19,6 +24,9 @@ public class Movie {
     @Column(name = "release_year")
     private int releaseYear;
 
+    public Movie() {
+    }
+
     public Movie(String movieName, String genre, String language, String info, int releaseYear) {
         this.movieName = movieName;
         this.genre = genre;
@@ -26,8 +34,6 @@ public class Movie {
         this.info = info;
         this.releaseYear = releaseYear;
     }
-
-    public Movie(){}
 
     public void setId(Long id) {
         this.id = id;
@@ -75,6 +81,7 @@ public class Movie {
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
+
 
     @Override
     public String toString() {

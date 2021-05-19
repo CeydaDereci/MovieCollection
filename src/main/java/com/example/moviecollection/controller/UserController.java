@@ -37,7 +37,7 @@ public class UserController {
             userService.saveUser(user);
 
         }
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/")

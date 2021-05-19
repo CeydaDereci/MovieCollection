@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -36,5 +38,16 @@ public class MovieController {
         return "movies";
     }
 
+    @RequestMapping(value = "/movies/{id}", method = RequestMethod.DELETE)
+    public void deleteMovie(@PathVariable long id) {
+        Movie m = movieService.findById(id);
+        if (m != null) {
+            movieService.deleteMovieById(id);
+        }
+    }
 
+    //edit movie
+    //find by name
+    //find by genre
+    //sort by year
 }
