@@ -1,68 +1,64 @@
 package com.example.moviecollection.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Movie {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
-    private long id;
-
-    @Column(name = "Name")
-    private String name;
-    @Column(name = "Release Year")
-    private int year;
-    @Column(name = "Genre")
+    @GeneratedValue
+    private Long id;
+    @Column(name = "movie_name")
+    private String movieName;
+    @Column(name = "genre")
     private String genre;
-    @Column(name = "Info")
-    private String info;
-    @Column(name = "Language")
+    @Column(name = "language")
     private String language;
+    @Column(name = "info")
+    private String info;
+    @Column(name = "release_year")
+    private int releaseYear;
 
-    @JoinTable(joinColumns = @JoinColumn(name = "film_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    @ManyToMany(mappedBy = "films", fetch = FetchType.EAGER)
-    private Collection<Actor> actors;
-
-    public Movie(String name, int year, String genre, String info, String language) {
-        this.name = name;
-        this.year = year;
+    public Movie(String movieName, String genre, String language, String info, int releaseYear) {
+        this.movieName = movieName;
         this.genre = genre;
-        this.info = info;
         this.language = language;
+        this.info = info;
+        this.releaseYear = releaseYear;
     }
 
-    public Movie() {
-    }
+    public Movie(){}
 
     public void setId(Long id) {
         this.id = id;
     }
-
     public Long getId() {
         return id;
     }
 
-    public void setName(String name){this.name = name;}
-
-    public String getName(){return name;}
-
-    public int getYear() {
-        return year;
+    public String getMovieName() {
+        return movieName;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
     }
 
-    public void setGenre(String genre){this.genre = genre;}
+    public String getGenre() {
+        return genre;
+    }
 
-    public String getGenre(){return genre;}
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
-    public void setLanguage(String language){this.language = language;}
+    public String getLanguage() {
+        return language;
+    }
 
-    public String getLanguage(){return language;}
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     public String getInfo() {
         return info;
@@ -72,25 +68,22 @@ public class Movie {
         this.info = info;
     }
 
-    public Collection<Actor> getActors() {
-        return actors;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setActors(Collection<Actor> actors) {
-        this.actors = actors;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     @Override
     public String toString() {
         return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", year=" + year +
+                "movieName='" + movieName + '\'' +
                 ", genre='" + genre + '\'' +
-                ", info='" + info + '\'' +
                 ", language='" + language + '\'' +
-                ", actors=" + actors +
+                ", info='" + info + '\'' +
+                ", releaseYear=" + releaseYear +
                 '}';
     }
-
 }
