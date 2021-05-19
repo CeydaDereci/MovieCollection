@@ -56,4 +56,10 @@ public class UserController {
     public String secure() {
         return "secure";
     }
+
+    @RequestMapping("/movies")
+    public String movies(){return "movies";}
+
+    @RequestMapping("/addMovie")
+    public String addMovie(){return "addMovie";}
 }
