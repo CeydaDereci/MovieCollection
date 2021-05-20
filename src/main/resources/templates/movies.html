@@ -42,21 +42,14 @@
             <th></th>
             <th></th>
         </tr>
-        <tr th:each="movie : ${movie}">
+        <tr th:each="movie : ${movieList}">
             <td th:text="${movie.movieName}">Movie name</td>
             <td th:text="${movie.genre}">Genre</td>
             <td th:text="${movie.language}">Language</td>
             <td th:text="${movie.info}">Info</td>
             <td th:text="${movie.releaseYear}">Year</td>
             <td>
-                <form th:action="@{/movies/${movie.id}}" th:method="edit">
-                    <button type="button" class="btn btn-warning">Edit</button>
-                </form>
-            </td>
-            <td>
-                <form th:action="@{/movies/${movie.id}}" th:method="delete">
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </form>
+               <button type="button" class="btn btn-warning">Edit</button>
             </td>
         </tr>
     </table>
@@ -66,18 +59,14 @@
 </div>
 <div class="container">
     <div>
-        <form th:action="@{/movies}" th:object="${movie}" th:method="get">
-            <label>Movie name</label>
-            <input type="text" id="movieName" placeholder="Movie Name" class="form-control"/><br/>
-            <button type="button" class="btn btn-info">Find</button>
-        </form>
+        <label>Movie name</label>
+        <input type="text" id="movieName" placeholder="Movie Name" class="form-control"/><br/>
+        <button type="button" class="btn btn-info">Find</button>
     </div>
     <div>
-     <form th:action="@{/movies}" th:object="${movie}" th:method="get">
-          <label>Genre</label>
-          <input type="text" id="genre" placeholder="Genre" class="form-control"/><br/>
-          <button type="button" class="btn btn-info">Find</button>
-        </form>
+        <label>Genre</label>
+        <input type="text" id="genre" placeholder="Genre" class="form-control"/><br/>
+        <button type="button" class="btn btn-info">Find</button>
     </div>
 </div>
 

@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 public class MovieService {
-    private List<Movie> movies = new ArrayList<Movie>();
 
     @Autowired
     MovieRepository movieRepository;
@@ -32,7 +31,6 @@ public class MovieService {
     public void addMovie(Movie m){
         Movie movie = new Movie(m.getMovieName(),m.getGenre(),m.getLanguage(),m.getInfo(),m.getReleaseYear());
         movieRepository.save(movie);
-        movies.add(movie);
         System.out.println(movieRepository.findAll());
     }
 
@@ -47,26 +45,6 @@ public class MovieService {
 
     public void deleteMovieById(long id) {
         movieRepository.delete(id);
-        movies.remove(movieRepository.findOne(id));
     }
 
-    public List<Movie> retrieveMoviesName(String name) {
-        List<Movie> filteredMovies = new ArrayList<Movie>();
-        for (Movie movie : movies) {
-            if (movie.getMovieName().equals(name)) {
-                filteredMovies.add(movie);
-            }
-        }
-        return filteredMovies;
-    }
-
-    public List<Movie> retrieveMoviesGenre(String genre) {
-        List<Movie> filteredMovies = new ArrayList<Movie>();
-        for (Movie movie : movies) {
-            if (movie.getGenre().equals(genre)) {
-                filteredMovies.add(movie);
-            }
-        }
-        return filteredMovies;
-    }
 }
