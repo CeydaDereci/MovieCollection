@@ -51,6 +51,11 @@
             <td>
                <button type="button" class="btn btn-warning">Edit</button>
             </td>
+            <td>
+                <form th:action="@{/movies/${movie.id}}" th:method="delete">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>

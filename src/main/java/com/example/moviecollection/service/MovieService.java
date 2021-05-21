@@ -19,15 +19,6 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public Movie findByMovieName(String movieName){
-        return movieRepository.findByMovieName(movieName);
-    }
-
-    public Movie findByGenre(String genre){
-        return movieRepository.findByGenre(genre);
-    }
-
-
     public void addMovie(Movie m){
         Movie movie = new Movie(m.getMovieName(),m.getGenre(),m.getLanguage(),m.getInfo(),m.getReleaseYear());
         movieRepository.save(movie);

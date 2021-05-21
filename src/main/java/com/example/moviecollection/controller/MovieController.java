@@ -49,9 +49,25 @@ public class MovieController {
         }
     }
 
-    //edit movie
-    //find by name
-    //find by genre
-    //sort by year
+    /*
+    public Movie findByName(@PathVariable String name){
+        List<Movie> movieList = (List<Movie>) movieService.getMovies();
+        for(int i = 0;i < movieList.size() - 1;i++) {
+            if(movieList.get(i).getMovieName() == name)
+                return movieList.get(i);
+        }
+        return null;
+    }
+    public Movie findByGenre(@PathVariable String genre){
+        List<Movie> movieList = (List<Movie>) movieService.getMovies();
+        for(int i = 0;i < movieList.size() - 1;i++) {
+            if(movieList.get(i).getGenre() == genre)
+                return movieList.get(i);
+        }
+        return null;
+    }*/
+    //TO DO
+        //edit movie
+        //public void sortMovies(){ }
 
 }
